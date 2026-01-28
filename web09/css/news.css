@@ -1,0 +1,47 @@
+#news {
+    width: 385px;
+    margin: auto;
+    background-image: url(../images/t2.jpg);
+}
+#news .top {
+    background-image: url(../images/t1.jpg);
+    height: 116px;
+}
+#news .footer {
+    background-image: url(../images/t3.jpg);
+    height: 67px;
+}
+#news .body {
+    padding: 0 30px;
+}
+
+#content h2 {
+    /* border-width: 1px;
+    border-color: black;
+    border-style: solid; */
+    border-bottom: 4px double #000;
+}
+#content .p1 {
+    margin-left: 6em;
+    text-indent: -4em;
+}
+#content .p2 {
+    margin-left: 8.5em;
+    text-indent: -2.5em;
+}
+#content p {
+    text-indent: 2em;
+    text-align: justify;
+}
+
+#sport li {
+    /* list-style-type: "⭐ "; */
+    list-style-type: none;
+    background-color: cadetblue;
+    display: block;
+    width: 100px;
+    text-align: center;
+    margin: 5px 0;
+    color: #fff;
+    border-radius: 50px;
+}

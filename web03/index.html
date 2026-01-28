@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    樣式會有3種寫法：
+    1. 行內樣式 (Inline Style) ：直接寫在HTML標籤內的style屬性中
+    2. 內部樣式 (Internal Style) ：寫在HTML文件的<head>標籤內的<style>標籤中
+    3. 外部樣式 (External Style) ：寫在獨立的CSS文件中，並在HTML文件的<head>標籤內使用<link>標籤引入
+    選取器：
+    1. 標籤選取器 (Tag Selector) ：直接使用HTML標籤名稱來選取元素，例如：p { color: blue; }
+    2. 後代選取器 (Descendant Selector) ：選取某個元素內的所有指定子元素，例如：div p { font-size: 14px; }
+    3. 類別選取器 (Class Selector) ：使用class屬性來選取元素，例如：.classname { margin: 10px; }
+    超連結虛擬類別：
+    1. :link ：選取尚未被點擊過的連結
+    2. :visited ：選取已經被點擊過的連結
+    3. :hover ：當滑鼠懸停在連結上時應用的樣式
+    4. :active ：當連結被點擊時應用的樣式
+    -->
+    <style>
+        body {
+            background-image: url(images/bg.gif);
+            width: 700px;
+            height: 3000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1{
+            text-align: center;
+            font-family: 標楷體;
+            background-color: rgb(177, 241, 235);
+            width: 8em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h2{
+            color: blue;
+            clear: both;
+        }
+        nav{
+            text-align: center;
+        }
+        p img {
+            width: 579px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .img-float-left {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 30px;
+        }
+        .img-float-right {
+            float: right;
+        }
+        nav a {
+            text-decoration: none;
+            font-weight: bold;
+            background-color: green;
+            color: white;
+            padding: 10px 30px;
+            margin: 0 3px;
+        }
+        nav a:hover {
+            background-color: greenyellow;
+            color: green;
+        }
+        nav a:active {
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="top">綠島觀光景點簡介</h1>
+
+    <p><img src="images/map.gif" alt="綠島觀光地圖"></p>
+
+    <nav>
+        <a href="#p1">綠島機場</a>
+        <a href="#p2">南寮漁港</a>
+        <a href="#p3">海參坪</a>
+        <a href="#p4">朝日溫泉</a>
+    </nav>
+
+    <!--- 第一列內容 開始 --->
+    <h2 id="p1">綠島機場</h2>
+    <img class="img-float-left" src="images/p1.jpg" alt="">
+    <p>提供離島最便捷的交通，前往綠島旅遊，目前可以搭乘華信航空公司的小型飛機，航行時間只需15分鐘左右。對遊客們是很便利的交通選擇，唯航班飛行受氣候影響很大，搭乘前應先注意天候狀況，如風速太大或降雨等因素都影響飛機航行與否。</p>
+    <a href="#top"><img class="img-float-right" src="images/top.gif" alt=""></a>
+    <!--- 第一列內容 結束 --->
+
+
+    <!--- 第二列內容 開始 --->
+    <h2 id="p2">南寮漁港</h2>
+    <img class="img-float-left" src="images/p2.jpg" alt="">
+    <p>為遊客們進入綠島的主要通道，也是綠島最重要的對外港口，在暑假旺季時，出現在南寮漁港的觀光客絡繹不絕，顯示綠島的觀光深受國人的肯定，經由深入淺出的文字說明，提醒前來綠島遊玩的民眾，能認識綠島之美，而這些大自然千萬年來的結晶需要你們的珍惜。</p>
+    <a href="#top"><img class="img-float-right" src="images/top.gif" alt=""></a>
+    <!--- 第二列內容 結束 --->
+
+
+    <!--- 第三列內容 開始 --->
+    <h2 id="p3">海參坪</h2>
+    <img class="img-float-left" src="images/p3.jpg" alt="">
+    <p>位於綠島東部海岸之中段的海灣，從被稱為「小長城」的步道登臨觀海亭，即可一覽無遺，「睡美人」、慵懶的仰臥在海岸，曲線玲瓏、姿態迷人；趴在一側的「哈巴狗」大耳下垂，眼睛半閉，逗趣可愛。</p>
+    <a href="#top"><img class="img-float-right" src="images/top.gif" alt=""></a>
+    <!--- 第三列內容 結束 --->
+
+
+    <!--- 第四列內容 開始 --->
+    <h2 id="p4">朝日溫泉</h2>
+    <img class="img-float-left" src="images/p4.jpg" alt="">
+    <p>位於綠島東南海岸嶙峋礁岩間，為世界少有之鹹水溫泉，它的形成是由於海水在附近斷層下滲至地底深處受地熱加溫成熱水後，壓力增加而又從地層縫隙中湧出地表而成溫泉，其間建有三個溫泉池，各池溫度不同。此溫泉處於潮間帶，漲潮時隱入海中，退潮時露出海面，其得天獨厚之特性為綠島最為重要之遊憩資源之一。</p> 
+    <a href="#top"><img class="img-float-right" src="images/top.gif" alt=""></a>
+    <!--- 第四列內容 結束 --->
+
+</body>
+
+</html>
