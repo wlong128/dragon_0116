@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.write("<h1>大家好</h1>")
+    </script>
+</head>
+<body>
+    <h2>我是寫在body上的</h2>
+
+    <p><input type="button" value="送出" onclick="showMessage()"></p>
+
+    <div id="message"></div>
+
+    <script>
+        // alert("Hello, World!");
+        function showMessage() {
+            document.getElementById("message").innerHTML = "<h3>按鈕被點擊了！</h3>";
+            console.log("message","按鈕被點擊了！");
+        }
+    </script>
+</body>
+</html>
