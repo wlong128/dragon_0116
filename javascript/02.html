@@ -9,9 +9,115 @@
         let y = 3;
         sum(x, y);
 
+        let r = 5;
+        let a = area(r);
+
+        document.write("<br>半徑為 " + r + " 的圓面積為 " + a.toFixed(2));
+
+        // 宣告常數 
+        const PRICE = 100;
+        
+        r=10;
+        
+        const URL = "https://www.google.com";
+
+        // 無回傳值的函式
         function sum(a, b) {
             document.write(a + b)
         }
+
+        // 有回傳值的函式
+        function area(r) {
+            // area = πr²
+            let a = r * r * Math.PI;
+            return a;
+        }
+
+        // 宣告物件
+        let car = {
+            brand: "Toyota",
+            color: "Red",
+            price: 1000000,
+            start: function() {
+                document.write("<br>車子發動了");
+            },
+            stop: function() {
+                document.write("<br>車子停止了");
+            },
+            getPrice: function() {
+                return this.price;
+            },
+            run: function(n) {
+                // document.write("<br>車子在行駛" + n + "公里了！");
+                document.write(`<br>車子在行駛 ${n} 公里了！`);
+            }
+        }
+
+        document.write("<br>車子品牌：" + car.brand);
+        car.brand = "Honda";
+        document.write("<br>車子品牌：" + car.brand);
+        car.start();
+        car.stop();
+        // let price = car.getPrice();
+        let price = car.price;
+        document.write("<br>車子價格：" + price);
+        car.run(50);
+
+        let score1 = 85;
+        let score2 = 90;
+        let score3 = 78;
+        let score4 = 92;
+        let score5 = 88;
+        let score6 = 95;
+        let score7 = 80;
+        let score8 = 87;
+        let score9 = 91;
+        let score10 = 76;
+        let total = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
+        let avg = total / 10;
+        document.write("<br>總分：" + total);
+        document.write("<br>平均：" + avg);
+
+        // 使用陣列
+        let scores = [85, 90, 78, 92, 88, 95, 80, 87, 91, 76];
+        let sumScores = scores[0] + scores[1] + scores[2] + scores[3] + scores[4] + scores[5] + scores[6] + scores[7] + scores[8] + scores[9];
+        let avgScores = sumScores / scores.length;
+        document.write("<br>總分：" + sumScores);
+        document.write("<br>平均：" + avgScores.toFixed(2));
+        document.write("<br>陣列長度：" + scores.length);
+        document.write("<br>查詢陣列中是否有80分：" + scores.indexOf(80));
+        document.write("<br>查詢陣列中是否有81分：" + scores.indexOf(81));
+        document.write("<br>顯示陣列的所有內容：" + scores.join());
+        document.write("<br>顯示陣列的所有內容：" + scores.join('|'));
+        scores.sort();
+        document.write("<br>顯示陣列的排序後的內容：" + scores.join());
+        scores.reverse();
+        document.write("<br>顯示陣列的反轉後的內容：" + scores.join());
+        document.write("<br>取得陣列中字串：" + scores.toString());
+        scores.unshift(10);
+        document.write("<br>取得陣列中字串：" + scores.toString());
+        scores.push(100);
+        document.write("<br>取得陣列中字串：" + scores.toString());
+        scores.shift();
+        document.write("<br>取得陣列中字串：" + scores.toString());
+        scores.pop();
+        document.write("<br>取得陣列中字串：" + scores.toString());
+
+        let i = 1;
+        i++;
+        document.write("<br>i=" + i);
+        document.write("<br>i=" + ++i);
+        document.write("<br>i=" + i);
+        i+=10;
+        document.write("<br>i=" + i);
+        let j = '20';
+        document.write("<br>i+j=" + i+j);
+        document.write("<br>i大於j=" + (i>j));
+        document.write("<br>i=j=" + (i==j));
+        document.write("<br>i小於j=" + (i<j));
+        i = 20;
+        document.write("<br>i=j=" + (i===j));
+        
     </script>
 </head>
 <body>

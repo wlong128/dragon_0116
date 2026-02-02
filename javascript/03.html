@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 最小MVC，M:Model , V:View, C:Controller -->
+    <input type="number" name="" id="score">
+    <button onclick="processScore()">送出</button>
+    <div id="msg"></div>
+    <input type="number" name="" id="week">
+    <button onclick="processWeek()">送出</button>
+    <div id="msg2"></div>
+    <script>
+        function processScore() {
+            let score = document.getElementById('score').value;
+            let msg = document.getElementById('msg');
+
+            // if判斷式
+            if(score >= 60) {
+                msg.innerText = '及格';
+            } else if(score >= 50) {
+                msg.innerText = '請補考';
+            } else {
+                msg.innerText = '不及格';
+            }
+
+            // msg.innerText = score;
+        }
+        function processWeek() {
+            let week = document.getElementById('week').value;
+            let msg2 = document.getElementById('msg2');
+
+            // switch判斷式
+            switch(week) {
+                case '1':
+                    msg2.innerText = '星期一';
+                    break;
+                case '2':
+                    msg2.innerText = '星期二';
+                    break;
+                case '3':
+                    msg2.innerText = '星期三';
+                    break;
+                case '4':
+                    msg2.innerText = '星期四';
+                    break;
+                case '5':
+                    msg2.innerText = '星期五';
+                    break;
+                case '6':
+                    msg2.innerText = '星期六';
+                    break;
+                case '7':
+                    msg2.innerText = '星期日';
+                    break;
+                default:
+                    msg2.innerText = '輸入錯誤';
+            }
+        }
+    </script>
+</body>
+</html>

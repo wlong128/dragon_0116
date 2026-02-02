@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="msg"></div>
+    <script>
+        // for 迴圈
+        // let msg = document.getElementById('msg');
+        // for(let i = 1; i <= 1000; i+=10) {
+        //     msg.innerHTML += i + '<br>';
+        // }
+        // 100個值的陣列
+        let scores = [78, 45, 23, 67, 89, 91, 34, 56, 70, 88, 49,
+                      60, 72, 81, 95, 38, 44, 100, 53, 66, 77,
+                      82, 90, 47, 58, 69, 74, 83, 92, 35, 41,
+                      55, 63, 71, 80, 87, 94, 29, 36, 48, 59,
+                      68, 75, 84, 93, 32, 40, 50, 61, 73, 79,
+                      86, 99, 27, 33, 42, 54, 62, 65, 76, 85,
+                      91, 30, 39, 46, 57, 64, 78, 88, 97, 22,
+                      31, 43, 52, 60, 70, 81, 89, 98, 25, 37,
+                      45, 51, 67, 74, 82, 90, 95, 28];
+        // for(let i=0; i<scores.length; i++) {
+        //     msg.innerHTML +=  `scores[${i}] = ${scores[i]} <br>`;
+        // }
+
+        scores.sort(function(a, b){return a - b}); // 陣列排序
+        
+        // for/in 迴圈,類似 for each，只是抓的是索引值
+        // for(let i in scores) {
+        //     msg.innerHTML +=  `分數[${i}] = ${scores[i]} <br>`;
+        // }
+
+        // while 迴圈
+        let i = 0;
+        // while(i < scores.length) {
+        //     msg.innerHTML += `s[${i}] = ${scores[i]} <br>`;
+        //     i++;
+        // }
+
+        // do/while 迴圈
+        do {
+            msg.innerHTML += `ss[${i}] = ${scores[i]} <br>`;
+            i++;
+        }while(scores[i] < 10);
+
+
+
+    </script>
+</body>
+</html>

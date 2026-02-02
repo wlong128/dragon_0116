@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樂透開獎程式</title>
+</head>
+<body>
+    <div id="ball"></div>
+    <script>
+        function generateLottery() {
+            const numbers = [];
+            while (numbers.length < 6) {
+                const num = Math.floor(Math.random() * 49) + 1;
+                if (!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+            
+            numbers.sort((a, b) => a - b);
+            
+            const ballDiv = document.getElementById('ball');
+            ballDiv.innerHTML = numbers.map(num => 
+                `<span style="display:inline-block; width:40px; height:40px; border-radius:50%; background:#ff6b6b; color:white; text-align:center; line-height:40px; margin:5px; font-weight:bold;">${num}</span>`
+            ).join('');
+        }
+
+        generateLottery();
+    </script>
+</body>
+</html>
