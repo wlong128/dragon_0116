@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .red {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Dom tree -->
+        <div id="card">
+            <h1 class="red">Title</h1>
+            <img src="https://picsum.photos/150/100" alt="Placeholder Image">
+            <p class="red">This is a paragraph.</p>
+            <p>No.001</p>
+        </div>
+        <script>
+            let card = document.getElementById("card");
+            card.style.color = "blue";
+            let p = document.getElementsByTagName("p");
+            p[1].style.fontWeight = "bold";
+            p[0].style.fontSize = "24px";
+            let p1 = document.getElementsByClassName("red");
+            p1[0].style.fontStyle = "italic";
+            p1[0].innerText = "Card Title"
+            p1[1].innerHTML = "<small>This is an important paragraph.</small>"
+        </script>
+    </body>
+</html>

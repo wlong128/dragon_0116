@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.write(typeof "123"+"<br>");
+        document.write(typeof 123+"<br>");
+        document.write(typeof true+"<br>");
+        document.write(typeof undefined+"<br>");
+        document.write(typeof ""+"<br>");
+        let x;
+        document.write(typeof x+"<br>");
+        x = 100;
+        document.write(typeof x+"<br>");
+        x = "Hello";
+        document.write(typeof x+"<br>");
+        // 舉java為例來宣告變數
+        // int a = 10;
+        // String b = "Hello";
+        document.write(Math.PI+"<br>");
+
+        let d = new Date();
+        document.write(d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日<br>");
+        document.write(d.getHours() + "時" + d.getMinutes() + "分" + d.getSeconds() + "秒<br>");
+    </script>
+</body>
+</html>
