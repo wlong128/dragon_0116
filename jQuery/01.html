@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>我是H1</h1>
+    <p>我是段落</p>
+    帳號：<input type="text" name="" id="username"><br>
+    <button id="send">送出</button>
+    <button id="show">顯示</button><br>
+    <ul id="sport"></ul>
+    <script>
+        // 原生JS的 ready 寫法
+        // window.onload = function(){
+
+        // }
+        // jQuery 的 ready 寫法
+        // $(document).ready(function(){
+            
+        // })
+        // jQuery 的 ready 簡寫
+        $(function(){
+            $('#send').click(function(){
+                // h1 變紅色
+                $('h1').css('color', 'red');
+                $(this).css('color', 'blue').css('border', '2px solid blue');
+                // alert($('h1').css('font-size'));
+                $('p').hide();
+                // $('h1').text('我是新的H1標題');
+                $('h1').html('<i>我是新的H1標題</i>');
+                // alert($('h1').text());
+                // alert($('#username').val());
+                $('#sport').append('<li>' + $('#username').val() + '</li>');
+            })
+            $('#show').click(function(){
+                $('p').show();
+            })
+        })
+    </script>
+</body>
+</html>
