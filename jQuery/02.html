@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery</h1>
+    <h2>互動表單</h2>
+    <p>請輸入你喜歡的運動</p>
+    <input type="text" name="" id="item">
+    <button id="addPrepend">增加在前</button>
+    <button id="addAppend">增加在後</button>
+    <button id="addBefore">增加在前</button>
+    <button id="addAfter">增加在後</button>
+    <br>
+    <button id="clear">清空</button>
+    <button id="addImage">新增圖片</button>
+    <button id="removeImage">移除圖片</button>
+    <button id="hide">隱藏Sport</button>
+    <button id="show">顯示Sport</button>
+    <button id="toggle">切換顯示/隱藏</button>
+    <button id="fadeToggle">淡入淡出切換</button>
+    <!-- 
+    id 命名法：使用小寫英文、數字、連字號，避免使用特殊符號或空格 
+    1. 使用 _ 來分隔單字，例如：add_prepend、fade_toggle
+    2. 使用 camelCase 來命名，例如：addPrepend、fadeToggle
+    -->
+    <button id="slideToggle">滑動切換</button>
+    <button id="animate">動畫</button>
+
+
+    <ul id="sport">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+    </ul>
+
+    <p id="test">12345678</p>
+
+    <img alt="Placeholder Image">
+
+    <script>
+        $(function(){
+            $('#addPrepend').click(function(){
+                let sport = $('#item').val();
+                $('#sport').prepend('<li>' + sport + '</li>');
+                $('#item').val('');
+            })
+            $('#addAppend').click(function(){
+                let sport = $('#item').val();
+                $('#sport').append('<li>' + sport + '</li>');
+                $('#item').val('');
+            })
+            $('#addAfter').click(function(){
+                let sport = $('#item').val();
+                $('#sport').after('<li>' + sport + '</li>');
+                $('#item').val('');
+            })
+            $('#addBefore').click(function(){
+                let sport = $('#item').val();
+                $('#sport').before('<li>' + sport + '</li>');
+                $('#item').val('');
+            })
+            $('#clear').click(function(){
+                $('#sport').remove();
+                $('#test').remove();
+            })
+            // .click 只適用於網頁載入時已存在的元素，新增的元素不會有事件
+            // $('#sport li').click(function(){
+            //     $(this).remove();
+            // })
+            // .on 可以適用於網頁載入時已存在的元素，也適用於新增的元素
+            $('#sport').on('click', 'li', function(){
+                // $(this).remove();
+                // 將所有 li 的 active 移除
+                $('#sport li').removeClass('active');
+                $(this).addClass('active');
+            })
+            $('#addImage').click(function(){
+                $('img').attr('src', 'https://picsum.photos/320/240');
+            })
+            $('#removeImage').click(function(){
+                $('img').removeAttr('src');
+            })
+            $('#hide').click(function(){
+                $('#sport').hide(3000);
+            })
+            $('#show').click(function(){
+                $('#sport').show(3000);
+            })
+            $('#toggle').click(function(){
+                $('#sport').toggle(5000);
+            })
+            $('#fadeToggle').click(function(){
+                $('#sport').fadeToggle(3000);
+            })
+            $('#slideToggle').click(function(){
+                $('#sport').slideToggle(3000);
+            })
+            $('#animate').click(function(){
+                $('img').css({
+                    position: 'relative'
+                });
+                $('img').animate({
+                    left: '200px',
+                }, 3000,function(){
+                    // 動畫完成後的回呼函式
+                    console.log('動畫1完成');
+                }).animate({
+                    opacity: 0.5,
+                    height: '50px',
+                    width: '200px'
+                }, 3000, function(){
+                    // 動畫完成後的回呼函式
+                    console.log('動畫2完成');
+                });
+            })
+        })
+    </script>
+</body>
+</html>

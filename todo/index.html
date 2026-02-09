@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <h1>待辦事項</h1>
+    待辦事項：<input type="text" id="item">
+    期限：<input type="date" id="date">
+    <button id="add">新增</button>
+    <button id="save">儲存</button>
+    <table id="list" border="1" cellspacing="0" cellpadding="5" style="margin-top: 20px;">
+        <tr>
+            <th>完成否</th>
+            <th>待辦事項</th>
+            <th>期限</th>
+        </tr>
+        <!-- 待辦事項會顯示在這裡 -->
+    </table>
+
+    <script>
+        $(function() {
+            var todos = [];
+
+            // 從 localStorage 讀取已儲存的待辦事項
+            var savedTodos = localStorage.getItem('todos');
+            if (savedTodos) {
+                todos = JSON.parse(savedTodos);
+                // 重新顯示已儲存的待辦事項
+                todos.forEach(function(todo) {
+                    var newRow = '<tr>' +
+                        '<td align="center"><input type="checkbox" id="todo_' + todo.id + '"></td>' +
+                        '<td>' + todo.item + '</td>' +
+                        '<td>' + todo.date + '</td>' +
+                        '</tr>';
+                    $('#list').append(newRow);
+                });
+            }
+
+            $('#add').click(function() {
+                var item = $('#item').val();
+                var date = $('#date').val();
+
+                var todo = {
+                    id: Date.now(),
+                    done: false,
+                    item: item,
+                    date: date
+                }
+
+                todos.push(todo);
+
+                if (item && date) {
+                    var newRow = '<tr>' +
+                        '<td align="center"><input type="checkbox" id="todo_' + todo.id + '"></td>' +
+                        '<td>' + todo.item + '</td>' +
+                        '<td>' + todo.date + '</td>' +
+                        '</tr>';
+                    $('#list').append(newRow);
+                    $('#item').val('');
+                    $('#date').val('');
+                } else {
+                    alert('請輸入待辦事項和期限');
+                }
+            });
+
+            $('#save').click(function() {
+                var dataToSave = JSON.stringify(todos);
+                localStorage.setItem('todos', dataToSave);
+                alert('待辦事項已儲存');
+            })
+        })
+    </script>
+    
+</body>
+</html>
