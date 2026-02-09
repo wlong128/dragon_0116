@@ -12,14 +12,16 @@
     待辦事項：<input type="text" id="item">
     期限：<input type="date" id="date">
     <button id="add">新增</button>
-    <button id="save">儲存</button>
-    <table id="list" border="1" cellspacing="0" cellpadding="5" style="margin-top: 20px;">
+    <table border="1" cellspacing="0" cellpadding="5" style="margin-top: 20px;">
         <tr>
             <th>完成否</th>
             <th>待辦事項</th>
             <th>期限</th>
+            <th>操作</th>
         </tr>
-        <!-- 待辦事項會顯示在這裡 -->
+        <tbody id="list">
+            <!-- 待辦事項會顯示在這裡 -->
+        </tbody>
     </table>
 
     <script>
@@ -33,9 +35,13 @@
                 // 重新顯示已儲存的待辦事項
                 todos.forEach(function(todo) {
                     var newRow = '<tr>' +
-                        '<td align="center"><input type="checkbox" id="todo_' + todo.id + '"></td>' +
+                        '<td align="center">' +
+                        // 透過三元運算子決定 checkbox 是否被勾選, 判斷式?true的值:false的值
+                        '<input type="checkbox" id="todo_' + todo.id + '" ' + (todo.done ? 'checked' : '') + '>' +
+                        '</td>' +
                         '<td>' + todo.item + '</td>' +
                         '<td>' + todo.date + '</td>' +
+                        '<td><button class="del" data-id="' + todo.id + '">刪除</button></td>'
                         '</tr>';
                     $('#list').append(newRow);
                 });
@@ -54,25 +60,67 @@
 
                 todos.push(todo);
 
+                // 根據日期對待辦事項進行排序，將日期較早的事項顯示在前面
+                todos.sort(function(a, b) {
+                    return new Date(a.date) - new Date(b.date);
+                });
+
                 if (item && date) {
-                    var newRow = '<tr>' +
-                        '<td align="center"><input type="checkbox" id="todo_' + todo.id + '"></td>' +
-                        '<td>' + todo.item + '</td>' +
-                        '<td>' + todo.date + '</td>' +
-                        '</tr>';
-                    $('#list').append(newRow);
-                    $('#item').val('');
-                    $('#date').val('');
+                    // 清空表格內容，重新顯示排序後的待辦事項
+                    $('#list').empty();
+                    // 重新顯示已儲存的待辦事項
+                    todos.forEach(function(todo) {
+                        var newRow = '<tr>' +
+                            '<td align="center">' +
+                            // 透過三元運算子決定 checkbox 是否被勾選, 判斷式?true的值:false的值
+                            '<input type="checkbox" id="todo_' + todo.id + '" ' + (todo.done ? 'checked' : '') + '>' +
+                            '</td>' +
+                            '<td>' + todo.item + '</td>' +
+                            '<td>' + todo.date + '</td>' +
+                            '<td><button class="del" data-id="' + todo.id + '">刪除</button></td>'
+                            '</tr>';
+                        $('#list').append(newRow);
+                    });
+
+                    saveTodos();
                 } else {
                     alert('請輸入待辦事項和期限');
                 }
             });
 
-            $('#save').click(function() {
+            function saveTodos() {
                 var dataToSave = JSON.stringify(todos);
                 localStorage.setItem('todos', dataToSave);
-                alert('待辦事項已儲存');
-            })
+                // alert('待辦事項已儲存');
+            }
+
+            // 監聽 checkbox 的變化，更新待辦事項的完成狀態
+            $('#list').on('change', 'input[type="checkbox"]', function() {
+                // 透過 split 取得 checkbox 的 id，從中提取待辦事項的 id，
+                // 如：todo_1770385335021，則提取出 [0]todo, [1]1770385335021
+                var id = $(this).attr('id').split('_')[1];
+                var todo = todos.find(function(t) { return t.id == id; });
+                if (todo) {
+                    // 更新待辦事項的完成狀態
+                    todo.done = $(this).is(':checked');
+                    saveTodos();
+                }
+            });
+
+            // 監聽刪除按鈕的點擊事件，刪除對應的待辦事項
+            $('#list').on('click', '.del', function() {
+                // 彈出確認對話框，詢問使用者是否確定要刪除
+                if(confirm('確定要刪除嗎？') == false){
+                    return;
+                }
+                var id = $(this).data('id');
+                // 從 todos 陣列中移除對應的待辦事項
+                // filter 方法會返回一個新的陣列，包含所有不符合條件的元素，即 id 不等於要刪除的 id 的元素
+                todos = todos.filter(function(t) { return t.id != id; });
+                // 從 DOM 中移除對應的表格行
+                $(this).closest('tr').remove();
+                saveTodos();
+            });
         })
     </script>
     
